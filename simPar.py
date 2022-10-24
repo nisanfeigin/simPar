@@ -1,30 +1,16 @@
-from time import sleep
-import urllib.request, urllib.parse, urllib.error
-import json
 import numpy as np
 import pandas as pd
 from numpy import *
-import yahoo_fin
-from yahoo_fin.stock_info import *
-import datetime
-import matplotlib.pyplot as plt
-import statsmodels.api as sm
-from scipy import stats
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
-import statistics
-import statsmodels.api as sm
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from math import sqrt
-from scipy import stats
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn import datasets, linear_model
 import xgboost as xgb
 from sklearn.model_selection import cross_val_score
 from multiprocessing import Manager, Process
-
-current_time = datetime.datetime.now()
 
 def lr(predDict, train_features, test_features, train_labels, test_labels, to_pred):
         regr = linear_model.LinearRegression()
@@ -122,7 +108,7 @@ int = 1
 col = "ret1w"
 rng = [x for x in range(0, 892)]
 
-chunks = np.array_split(rng, 11)
+chunks = np.array_split(rng, 1)
 if __name__ == "__main__":
     with Manager() as manager:
         lod = manager.list()  # <-- can be shared between processes.
@@ -141,8 +127,6 @@ if __name__ == "__main__":
         df_lod = pd.DataFrame(lod)
         df_lod.round(3)
         df_lod.to_excel("lod" + col[-2:] + ".xlsx")
-        print("Time now at greenwich meridian is:", current_time)
-        current_time = datetime.datetime.now()
-        print("Time now at greenwich meridian is:", current_time)
+
 
 
